@@ -1,8 +1,8 @@
-#! /bin/bash
-log_file="auth.log"
+#!/bin/bash
+log_file="/var/log/auth.log"
 limit_attempts=4
-attempts=$(grep "Failed Password" "log_file" | wc -l)
-if ["$attempts" -ge "limit_attempts"]; then
+attempts=$(grep "Failed Password" "$log_file" | wc -l)
+if ["$attempts" -ge "$limit_attempts"]; then
   echo "Possible brute force attack"
 else
   echo "No activity detected"
