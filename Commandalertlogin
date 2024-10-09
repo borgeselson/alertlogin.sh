@@ -1,4 +1,4 @@
-#!/bib/bash
+#!/bin/bash
 limit_attempts=3
 attempts=$(grep "failure" /var/log/auth.log | wc -l)
 echo "Number of attempts" $attempts
