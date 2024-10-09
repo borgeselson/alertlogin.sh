@@ -1,8 +1,10 @@
 #!/bib/bash
-limit_attempts=4
+limit_attempts=3
 attempts=$(grep "failure" /var/log/auth.log | wc -l)
+echo "Number of attempts" $attempts
+cat /var/log/auth.log | grep "failure"
 if [ "$attempts" -ge "$limit_attempts" ]; then
-  echo "Possible brute force attack"
+notify-send --icon=utilities.terminal "ALERT" "Possible brute force attack"
 else
-  echo "No activity detected"
+notify-send --icon=utilities-terminal "ALERT" "No activity detected"
 fi
